@@ -81,6 +81,7 @@ John->>Bob: How about you?
 Bob-->>John: Jolly good!
 ```
 
+
 ```mermaid
 classDiagram
 Class01 <|-- AveryLongClass : Cool

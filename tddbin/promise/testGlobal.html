@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>test rejectionhandled invoke</h2>
+  <script>
+    window.addEventListener("rejectionhandled", event => {
+      console.log("Promise rejected; reason: " + event.reason);
+    }, false);
+    var p = new Promise((r,j)=>j('p1'));
+    var p2 = new Promise((r,j)=>j('p2'));
+    p2.catch(reason=>console.log('p2 catch',reason));
+    setTimeout(()=>{
+      p.catch(j=>console.log('p1 catch',j));
+    p2.catch(reason=>console.log('p2 catch 2',reason));
+    },300)
+  </script>
+</body>
+
+</html>
