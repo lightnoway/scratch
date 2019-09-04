@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      var string = msg.toLowerCase();
+      var substring = "script error";
+      if (string.indexOf(substring) > -1) {
+        alert('Script Error: See Browser Console for Detail');
+      } else {
+        var message = [
+          'Message: ' + msg,
+          'URL: ' + url,
+          'Line: ' + lineNo,
+          'Column: ' + columnNo,
+          'Error object: ' + JSON.stringify(error)
+        ].join(' - ');
+        console.log('e:', arguments);
+        alert(message);
+      }
+
+      return false;
+    };
+    // throw new Error('sdf');
+    function* gen() {
+
+    }
+
+    // gen().throw('sdfwe');
+    try {
+      //在这里执行
+      gen().throw('sdfwe');
+
+    } catch (error) {
+      console.log('catched', error);
+    }
+  </script>
+</body>
+
+</html>
